@@ -14,11 +14,71 @@ El problema en cuestión corresponde al ejemplo 7-1 del libro, que corresponde a
 \section{Marco teórico}
 Se dispone a continuación de un breve marco teórico con el que se verá la resolución del problema.
 \subsection{Modelos de Inventario}
-\lipsum[1]
+Según el apunte número 2 encontrado en la plataforma Reko\cite{apunte}, un modelo de inventario es un modelo matemático que describe el comportamiento de un sistema de inventarios. Estos modelos se pueden ocupar para derivar políticas óptimas de inventario, las que suelen ser implementadas a partir de sistemas computacionales que indican cuando conviene reabastecer.
+
+Estos modelos pueden llegar a ser áltamente refinados y de múltiples variables, acontando por cantidad de agotamiento de inventario permitida y el costo que este incorre, demandas no constantes, tiempos de reabastecimientos no inmediatos, entre otros.
 
 \subsection{Lote de Wilson}
 \insertimage[\label{img:wilson}]{assets/Wilson.png}{scale=0.6}{Lote de Wilson simple, elaboración propia.}
-\lipsum[2]
+El lote de Wilson corresponde al Lote económico de compra óptimo para un modelo de inventario simple sin agotamiento y reabastecimiento inmediato, además de demanda constante, tal y como se presenta en la figura (\ref{img:wilson}).
+
+En esta figura, se presenta una figura triangular con una hipotenusa $\lambda$. Esta hipotenusa corresponde a la demanda del producto inventariado. Por otro lado, el valor de $Q$ corresponde a nuestro Lote económico de compra óptimo en un periodo $t$ dado. La hipotenusa en un instante $t$ en concreto corresponde a la cantidad de inventario en ese momento.
+
+\subsection{Funcion de Costo en un periodo}.
+Esta función de costo corresponde a todos los costos que se incurren en un periodo $t$ determinado. Para efectos del modelo de Wilson, corresponde a la suma de tres costos en concreto:
+
+\begin{enumerate}
+    \item Costo de adquisición, o la cantidad de producto multiplicado por su costo individual
+    \item Costo de mantención de inventario, calculable como el costo de mantención de una unidad de inventario multiplicada por la cantidad promedio de inventario en el periodo
+    \item Costo de colocar un pedido nuevo, que puede darse por costos bureocráticos y otros costos del negocio.
+\end{enumerate}
+
+A partir de estos tres costos podemos describir la Funcion de costo en un periodo de la siguiente manera:
+
+\insertgathered[\label{eqn:ft}]{
+    f_t(Q) = \textrm{Costo de Adquisición} + \textrm{Costo de Inventario} + \textrm{Costo de Pedido}\\
+    f_t(Q) = C_a Q + \frac{1}{2} Q t C_i + C_p
+}
+
+En esta ecuación, los valores de $C_a$ corresponden al costo de adquisición de una unidad de producto, $C_i$ es el costo de mantención de una unidad de producto, y $C_p$ es el costo de hacer un pedido. Notar además que los valores que acompañan a $C_i$ corresponden al area de la figura que el modelo de inventario intenta describir. La que es presentada en la equación \refeq{eqn:ft} corresponde al area de la figura para el modelo de Wilson.
+
+Además, Q corresponde a una cantidad de inventario que se compra en un periodo. Nuestro objetivo es optimizar este valor Q, pero nuestra función de costo no es convexa, por lo que debemos encontrar una función que si lo sea.
+
+\subsection{Función de Costo por unidad de Tiempo}
+A partir de nuestra función de costo por periodo \ref{eqn:ft}, podemos generar una nueva función de costo tal que:
+
+\insertgathered[\label{eqn:futuno}]{
+    f_{ut}(Q) = \frac{f_t(Q)}{t} \\
+    f_{ut}(Q) = \frac{C_a Q}{t} + \frac{\frac{1}{2} Q t C_i}{t}  + \frac{C_p}{t}
+}
+
+Jugando un poco con la figura de nuestro modelo de Wilson \ref{img:wilson}, podemos obtener un valor de $t$ que sea más útil para desarrollar nuestra ecuación.
+
+\insertgathered[\label{eqn:tan}]{
+    \tan \alpha = \lambda = \frac{Q}{t} \\
+    t = \frac{Q}{\lambda}
+}
+
+Reemplazando este nuevo valor de $t$, podemos desarrollar nuestra ecuación inicial \ref{eqn:futuno}, tal que:
+
+\insertgathered[\label{eqn:fut}]{
+    f_{ut}(Q) = \frac{C_a Q}{\frac{Q}{\lambda}} + \frac{\frac{1}{2} Q t C_i}{t}  + \frac{C_p}{\frac{Q}{\lambda}} \\
+    f_{ut}(Q) = \frac{C_a Q \lambda}{Q} + \frac{\frac{1}{2} Q t C_i}{t}  + \frac{C_p \lambda}{Q} \\
+    f_{ut}(Q) = C_a \lambda + \frac{1}{2} Q C_i  + \frac{C_p \lambda}{Q}
+}
+
+Esta función es convexa, por lo que podemos igualar el valor de la derivada de esta a cero para obtener una expresión que nos entrega un Lote económico de compra óptimo para esta figura.
+
+\insertgathered[\label{eqn:dfut}]{
+    \frac{d f_{ut}(Q)}{d Q} = 0 \\
+    \frac{d (C_a \lambda)}{d Q} + \frac{d (\frac{1}{2} Q C_i)}{d Q} + \frac{d (\frac{C_p \lambda}{Q})}{d Q}  = 0 \\
+    \frac{1}{2} C_i - \frac{C_p \lambda}{Q²} = 0 \\
+    Q² = \frac{C_p \lambda}{\frac{1}{2} C_i} \\
+}
+
+\insertequation[\label{eqn:lotewilson}]{\boxed{Q = \sqrt{\frac{2 C_p \lambda}{C_i}}}}
+
+La ecuación resultante corresponde al Lote de Wilson.
 
 \clearpage
 \bibliography{library}
