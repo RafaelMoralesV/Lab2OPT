@@ -151,7 +151,49 @@ Por último, nuestro costo por unidad de tiempo sería:
 
 Notar que esta vez, la división entre nuestro costo por unidad de tiempo y nuestro costo por periodo para la obtención de periodos en nuestra unidad de tiempo nos entrega como resultado 16\footnote{Esto, utilizando el valor real (con decimales) de cada función. El valor con la aproximación es de 16.000378931}. Para términos de duración de estos periodos, sería de 22.8125, lo que equivale a 1 pedido cada, aproximadamente, 23 días.
 
+\subsection{Problema con datos entregados, via WinQSB}
+En nuestra última resolución, utilizaremos el problema original (Figura \ref{img:problema}) con datos sin alterar. La resolución esta vez se hará por vías del software WinQSB, montado en una máquina virtual de Windows XP. Utilizando el programa de problemas de inventario, generaremos una nueva solución de acuerdo a la siguiente figura:
+
+\insertimage[\label{img:winqsb:1}]{assets/winqsb/1.png}{scale=0.6}{Selección de tipo de problema de inventario.}
+
+Ingresamos los datos del problema original de la siguiente forma, y generamos la solución:
+\insertimage[\label{img:winqsb:2}]{assets/winqsb/2.png}{scale=0.6}{Tabla de datos de entrada para el problema de inventario.}
+
+Nuestra tabla de resultado muestra, en su primera mitad, la tabla de datos originales, y luego las soluciones correspondientes. Estas soluciones son iguales a los datos encontrados anteriormente, o derivaciones del mismo:
+\insertimage[\label{img:winqsb:3}]{assets/winqsb/3.png}{scale=0.6}{Tabla de resultados generada en WinQSB}
+
+Siguiendo desde arriba hacia abajo en nuestra tabla presentada en la figura \ref{img:winqsb:3}, vemos:
+
+\begin{enumerate}
+    \item \textbf{Order quantity:} Correspondiente al lote económico de compra que hemos calculado.
+    \item \textbf{Maximum inventory:} Igual a nuestra cantidad de orden, debido a la naturaleza simple de nuestro modelo.
+    \item \textbf{Maximum backorder:} No aplica para este problema.
+    \item \textbf{Order interval in year:} Corresponde a 1 sobre la cantidad de periodos. Nuestra solución original sugiere 20 periodos de compra, por lo que el intervalo de compra en esta unidad de tiempo es de $0.05$.
+    \item \textbf{Reorder point:} No aplica para este problema
+    \item \textbf{Total setup or ordering cost:} Costo total en realización de pedidos. Hacemos un total de 20 pedidos a un costo de 5 cada uno, por lo que nuestro costo es de \$100 unidades monetarias.
+    \item \textbf{Total holding cost:} Costo total de mantener pedidos. Puede ser calculado como el area de la figura (El area de un triangulo, según la figura \ref{img:wilson}) por el costo de mantener el inventario, dividido por el periodo. El resultado es de \$100 unidades monetarias.
+    \item \textbf{Total shortage cost:} No aplica para este problema.
+    \item \textbf{Subtotal of above:} Suma de nuestro costo de pedidos mas nuestro costo de mantención de inventario en nuestra unidad de tiempo.
+    \item \textbf{Total material cost:} Cantidad de pedidos, por cantidad de orden, por costo de adquisición. Nuestro resultado corresponde a \$20,000 unidades monetarias.
+    \item \textbf{Grand total cost:} Costo total por unidad de tiempo. Según nuestro resultado inicial (Ecuación \ref{res:fut1}), \$20,200 unidades monetarias.
+\end{enumerate}
+
+Podemos complementar además esto, con un análisis gráfico (Figura \ref{img:winqsb:4}). A continuación se presenta un gráfico de cada tipo de costo dependiendo de la cantidad de orden. En el eje de las abcisas, la cantidad de orden. En el eje de las ordenadas, el costo en unidades monetarias. En rosa, costo de pedidos. En rojo, costo de mantención de inventario. En negro, costo total por unidad de tiempo. El valor de nuestro lote economico de compra es demarcado como \quotes{EOQ} por el software.
+
+\insertimage[\label{img:winqsb:4}]{assets/winqsb/4.png}{scale=0.38}{Funciones de costo a partir de cantidad de orden}
+
+Como último gráfico, podemos re hacer nuestra figura del modelo de Wilson (Figura \ref{img:wilson}) con los datos obtenidos en nuestro resultado. Nuestro modelo de inventario, entonces, luce de la siguiente manera:
+
+\insertimage[\label{img:winqsb:5}]{assets/winqsb/5.png}{scale=0.38}{Modelo de Wilson a partir de resultados}
+
+
 %%%%% Fin seccion Resolución del problema %%%%%
 \clearpage
+
+\section{Conclusión}
+
+%%%%% Fin seccion Conclusión %%%%%
+\clearpage
+
 
 \bibliography{library}
