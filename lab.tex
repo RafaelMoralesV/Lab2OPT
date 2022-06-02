@@ -25,6 +25,8 @@ El lote de Wilson corresponde al Lote económico de compra óptimo para un model
 En esta figura, se presenta una figura triangular con una hipotenusa $\lambda$. Esta hipotenusa corresponde a la demanda del producto inventariado. Por otro lado, el valor de $Q$ corresponde a nuestro Lote económico de compra óptimo en un periodo $t$ dado. La hipotenusa en un instante $t$ en concreto corresponde a la cantidad de inventario en ese momento.
 
 \subsection{Funcion de Costo en un periodo}.
+\insertimageleft[\label{img:grafica-ft}]{assets/graf-ft.png}{0.4}{Grafica de $f_t(Q)$ para los datos del problema dado (Figura \ref{img:problema}). En el eje de las abcisas, el valor de Q. En el eje de las ordenadas, el costo. Elaborado en el software Geogebra.}
+
 Esta función de costo corresponde a todos los costos que se incurren en un periodo $t$ determinado. Para efectos del modelo de Wilson, corresponde a la suma de tres costos en concreto:
 
 \begin{enumerate}
@@ -33,18 +35,23 @@ Esta función de costo corresponde a todos los costos que se incurren en un peri
     \item Costo de colocar un pedido nuevo, que puede darse por costos bureocráticos y otros costos del negocio.
 \end{enumerate}
 
-A partir de estos tres costos podemos describir la Funcion de costo en un periodo de la siguiente manera:
+A partir de estos tres costos podemos describir la Funcion de costo en un periodo de la siguiente manera:\\ \\
 
 \insertgathered[\label{eqn:ft}]{
     f_t(Q) = \textrm{Costo de Adquisición} + \textrm{Costo de Inventario} + \textrm{Costo de Pedido}\\
     f_t(Q) = C_a Q + \frac{1}{2} Q t C_i + C_p
 }
 
+
 En esta ecuación, los valores de $C_a$ corresponden al costo de adquisición de una unidad de producto, $C_i$ es el costo de mantención de una unidad de producto, y $C_p$ es el costo de hacer un pedido. Notar además que los valores que acompañan a $C_i$ corresponden al area de la figura que el modelo de inventario intenta describir. La que es presentada en la equación \refeq{eqn:ft} corresponde al area de la figura para el modelo de Wilson.
 
 Además, Q corresponde a una cantidad de inventario que se compra en un periodo. Nuestro objetivo es optimizar este valor Q, pero nuestra función de costo no es convexa, por lo que debemos encontrar una función que si lo sea.
 
+\clearpage
+
 \subsection{Función de Costo por unidad de Tiempo}
+\insertimageleft[\label{img:grafica-fut}]{assets/graf-fut.png}{0.4}{Grafica de $f_{ut}(Q)$ para los datos del problema dado (Figura \ref{img:problema}). En el eje de las abcisas, el valor de Q. En el eje de las ordenadas, el costo. Elaborado en el software Geogebra.}
+
 A partir de nuestra función de costo por periodo \ref{eqn:ft}, podemos generar una nueva función de costo tal que:
 
 \insertgathered[\label{eqn:futuno}]{
@@ -81,7 +88,7 @@ Esta función es convexa, por lo que podemos igualar el valor de la derivada de 
 La ecuación resultante corresponde al Lote de Wilson.
 
 %%%%% Fin seccion Marco teórico %%%%%
-\clearpage
+%\clearpage
 
 \section{Resolución del problema}
 \subsection{Problema con los datos entregados}
@@ -114,6 +121,35 @@ Esta comprobación también es aplicable a nuestra función de costo por unidad 
 \insertequation[\label{res:fut1}]{\boxed{f_{ut}(50) = \$20200}}
 
 Finalmente, con esta cantidad de pedidos nos podemos asegurar de que en nuestra unidad de tiempo conseguimos el menor costo posible. Esta unidad de tiempo puede representar un año, dividido en periodos $t$. Con una simple división entre el resultado de nuestra ecuación \ref{res:fut1} y nuestra ecuación \ref{res:ft1}, notamos que la cantidad de periodos es de 20, lo que significa que en esta unidad de tiempo de un año haríamos un total de 20 pedidos a intervalos constantes, lo que equivale a un pedido cada 18.25 días, aproximadamente.
+
+\subsection{Problema con datos originales}
+Vamos a generar otra resolución del problema con datos originales, según las indicaciones del laboratorio. Estos datos se presentan a continuación:
+
+\begin{itemize}
+    \item ($C_a$) Costo de adquisición: \$35 por unidad (Esto es dado por la suma de los dígitos de mi RUT).
+    \item ($C_p$) Costo de pedido: \$7 por pedido.
+    \item ($C_i$) Costo de mantención de inventario: \$3 por unidad.
+    \item ($\lambda$) Demanda del producto: 1200 unidades.
+\end{itemize}
+
+Estos cambios de parámetros no cambiar el modelo mayormente, por lo que el reemplazo que se hizo en la sección anterior es igual de válido. Bajo esto, tenemos entonces un nuevo valor para nuestro lote económico de compra:
+
+\insertequationanum{Q = \sqrt{\frac{2 \times 7 \times 1200}{3}}}
+\insertequation[\label{res:lec2}]{\boxed{Q = 74.83 \approx 75}}
+
+Debido a los valores decimales, utilizaremos la aproximación de $Q = 75$ para las funciones, presumiendo que no se pueden adquirir unidades decimales del producto. Notar que esto no sería el caso si nuestra unidad de adquisición fueran litros o gramos de producto, donde tiene sentido el uso de decimales.
+
+A partir de nuestro Lote económico de compra adquirido, podemos calcular el costo con nuestra nueva función de costo por periodo de tiempo, tal que:
+
+\insertequationanum{f_t(75) = 35 \times 75 + \frac{1}{2} \times 75 \times 3 \times \frac{75}{1200} + 7}
+\insertequation[\label{res:ft2}]{\boxed{f_t(75) = \$2639.03125 \approx \$2639}}
+
+Por último, nuestro costo por unidad de tiempo sería:
+
+\insertequationanum{f_{ut}(75) = 35 \times 1200 + \frac{75 \times 3}{2}   + \frac{7 \times 1200}{75}}
+\insertequation[\label{res:fut2}]{\boxed{f_{ut}(75) = \$42224.5 \approx \$42225}}
+
+Notar que esta vez, la división entre nuestro costo por unidad de tiempo y nuestro costo por periodo para la obtención de periodos en nuestra unidad de tiempo nos entrega como resultado 16\footnote{Esto, utilizando el valor real (con decimales) de cada función. El valor con la aproximación es de 16.000378931}. Para términos de duración de estos periodos, sería de 22.8125, lo que equivale a 1 pedido cada, aproximadamente, 23 días.
 
 %%%%% Fin seccion Resolución del problema %%%%%
 \clearpage
