@@ -8,8 +8,8 @@ El método de solución se divide en tres. Por un primer lado, se dará solució
 
 El problema en cuestión corresponde al ejemplo 7-1 del libro, que corresponde a un modelo de inventario simple para el cual no existe agotamiento y el tiempo de reposición es inmediato.
 
+%%%%% Fin seccion introduccion %%%%%
 \clearpage
-
 
 \section{Marco teórico}
 Se dispone a continuación de un breve marco teórico con el que se verá la resolución del problema.
@@ -80,5 +80,42 @@ Esta función es convexa, por lo que podemos igualar el valor de la derivada de 
 
 La ecuación resultante corresponde al Lote de Wilson.
 
+%%%%% Fin seccion Marco teórico %%%%%
 \clearpage
+
+\section{Resolución del problema}
+\subsection{Problema con los datos entregados}
+El problema original (Figura \ref{img:problema}) se plantea un modelo de Wilson simple con los siguientes parámetros:
+
+\begin{itemize}
+    \item ($C_a$) Costo de adquisición: \$20 por unidad.
+    \item ($C_p$) Costo de pedido: \$5 por pedido.
+    \item ($C_i$) Costo de mantención de inventario: \$4 por unidad.
+    \item ($\lambda$) Demanda del producto: 1000 unidades.
+\end{itemize}
+
+Utilizando nuestra ecuación para el Lote de Wilson, podemos encontrar nuestro lote económico de compra reemplazando los parámetros correspondientes:
+
+\insertequationanum{Q = \sqrt{\frac{2 \times 5 \times 1000}{4}}}
+\insertequation[\label{res:lec1}]{\boxed{Q = 50}}
+
+Sabemos entonces que optimizamos los costos de nuestros pedidos con una cantidad de 50 unidades. Con este resultado, podemos verificar cual es el costo por periodo (Utilizando la ecuación \ref{eqn:ft}):
+
+\insertequationanum{f_t(50) = 20 \times 50 + \frac{1}{2} \times 50 \times 4 \times t + 5}
+
+Podemos reemplazar el valor de $t$ nuevamente (utilizando la ecuación \ref{eqn:tan}), con lo que nos quedariamos con:
+
+\insertequationanum{f_t(50) = 20 \times 50 + \frac{1}{2} \times 50 \times 4 \times \frac{50}{1000} + 5}
+\insertequation[\label{res:ft1}]{\boxed{f_t(50) = \$1010}}
+
+Esta comprobación también es aplicable a nuestra función de costo por unidad de tiempo (Equación \ref{eqn:fut}):
+
+\insertequationanum{f_{ut}(50) = 20 \times 1000 + \frac{50 \times 4}{2}   + \frac{5 \times 1000}{50}}
+\insertequation[\label{res:fut1}]{\boxed{f_{ut}(50) = \$20200}}
+
+Finalmente, con esta cantidad de pedidos nos podemos asegurar de que en nuestra unidad de tiempo conseguimos el menor costo posible. Esta unidad de tiempo puede representar un año, dividido en periodos $t$. Con una simple división entre el resultado de nuestra ecuación \ref{res:fut1} y nuestra ecuación \ref{res:ft1}, notamos que la cantidad de periodos es de 20, lo que significa que en esta unidad de tiempo de un año haríamos un total de 20 pedidos a intervalos constantes, lo que equivale a un pedido cada 18.25 días, aproximadamente.
+
+%%%%% Fin seccion Resolución del problema %%%%%
+\clearpage
+
 \bibliography{library}
