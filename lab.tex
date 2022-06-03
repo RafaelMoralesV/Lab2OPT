@@ -8,7 +8,7 @@ El método de solución se divide en tres. Por un primer lado, se dará solució
 
 El problema en cuestión corresponde al ejemplo 7-1 del libro, que corresponde a un modelo de inventario simple para el cual no existe agotamiento y el tiempo de reposición es inmediato.
 
-%%%%% Fin seccion introduccion %%%%%
+%%%%% Fin sección introducción %%%%%
 \clearpage
 
 \section{Marco teórico}
@@ -16,26 +16,26 @@ Se dispone a continuación de un breve marco teórico con el que se verá la res
 \subsection{Modelos de Inventario}
 Según el apunte número 2 encontrado en la plataforma Reko\cite{apunte}, un modelo de inventario es un modelo matemático que describe el comportamiento de un sistema de inventarios. Estos modelos se pueden ocupar para derivar políticas óptimas de inventario, las que suelen ser implementadas a partir de sistemas computacionales que indican cuando conviene reabastecer.
 
-Estos modelos pueden llegar a ser áltamente refinados y de múltiples variables, acontando por cantidad de agotamiento de inventario permitida y el costo que este incorre, demandas no constantes, tiempos de reabastecimientos no inmediatos, entre otros.
+Estos modelos pueden llegar a ser altamente refinados y de múltiples variables, tomando en cuenta la cantidad de agotamiento de inventario permitida y el costo que este incurre, demandas no constantes, tiempos de abastecimiento no inmediatos, entre otros.
 
 \subsection{Lote de Wilson}
 \insertimage[\label{img:wilson}]{assets/Wilson.png}{scale=0.6}{Lote de Wilson simple, elaboración propia.}
-El lote de Wilson corresponde al Lote económico de compra óptimo para un modelo de inventario simple sin agotamiento y reabastecimiento inmediato, además de demanda constante, tal y como se presenta en la figura (\ref{img:wilson}).
+El lote de Wilson corresponde al Lote económico de compra óptimo para un modelo de inventario simple sin agotamiento y abastecimiento inmediato, además de demanda constante, tal y como se presenta en la figura (\ref{img:wilson}).
 
 En esta figura, se presenta una figura triangular con una hipotenusa $\lambda$. Esta hipotenusa corresponde a la demanda del producto inventariado. Por otro lado, el valor de $Q$ corresponde a nuestro Lote económico de compra óptimo en un periodo $t$ dado. La hipotenusa en un instante $t$ en concreto corresponde a la cantidad de inventario en ese momento.
 
-\subsection{Funcion de Costo en un periodo}.
-\insertimageleft[\label{img:grafica-ft}]{assets/graf-ft.png}{0.4}{Grafica de $f_t(Q)$ para los datos del problema dado (Figura \ref{img:problema}). En el eje de las abcisas, el valor de Q. En el eje de las ordenadas, el costo. Elaborado en el software Geogebra.}
+\subsection{Función de Costo en un periodo}.
+\insertimageleft[\label{img:grafica-ft}]{assets/graf-ft.png}{0.4}{Grafica de $f_t(Q)$ para los datos del problema dado (Figura \ref{img:problema}). En el eje de las abscisas, el valor de Q. En el eje de las ordenadas, el costo. Elaborado en el software Geogebra.}
 
 Esta función de costo corresponde a todos los costos que se incurren en un periodo $t$ determinado. Para efectos del modelo de Wilson, corresponde a la suma de tres costos en concreto:
 
 \begin{enumerate}
     \item Costo de adquisición, o la cantidad de producto multiplicado por su costo individual
     \item Costo de mantención de inventario, calculable como el costo de mantención de una unidad de inventario multiplicada por la cantidad promedio de inventario en el periodo
-    \item Costo de colocar un pedido nuevo, que puede darse por costos bureocráticos y otros costos del negocio.
+    \item Costo de colocar un pedido nuevo, que puede darse por costos burocráticos y otros costos del negocio.
 \end{enumerate}
 
-A partir de estos tres costos podemos describir la Funcion de costo en un periodo de la siguiente manera:\\ \\
+A partir de estos tres costos podemos describir la Función de costo en un periodo de la siguiente manera:\\ \\
 
 \insertgathered[\label{eqn:ft}]{
     f_t(Q) = \textrm{Costo de Adquisición} + \textrm{Costo de Inventario} + \textrm{Costo de Pedido}\\
@@ -43,14 +43,14 @@ A partir de estos tres costos podemos describir la Funcion de costo en un period
 }
 
 
-En esta ecuación, los valores de $C_a$ corresponden al costo de adquisición de una unidad de producto, $C_i$ es el costo de mantención de una unidad de producto, y $C_p$ es el costo de hacer un pedido. Notar además que los valores que acompañan a $C_i$ corresponden al area de la figura que el modelo de inventario intenta describir. La que es presentada en la equación \refeq{eqn:ft} corresponde al area de la figura para el modelo de Wilson.
+En esta ecuación, los valores de $C_a$ corresponden al costo de adquisición de una unidad de producto, $C_i$ es el costo de mantención de una unidad de producto, y $C_p$ es el costo de hacer un pedido. Notar además que los valores que acompañan a $C_i$ corresponden al area de la figura que el modelo de inventario intenta describir. La que es presentada en la ecuación \refeq{eqn:ft} corresponde al area de la figura para el modelo de Wilson.
 
 Además, Q corresponde a una cantidad de inventario que se compra en un periodo. Nuestro objetivo es optimizar este valor Q, pero nuestra función de costo no es convexa, por lo que debemos encontrar una función que si lo sea.
 
 \clearpage
 
 \subsection{Función de Costo por unidad de Tiempo}
-\insertimageleft[\label{img:grafica-fut}]{assets/graf-fut.png}{0.4}{Grafica de $f_{ut}(Q)$ para los datos del problema dado (Figura \ref{img:problema}). En el eje de las abcisas, el valor de Q. En el eje de las ordenadas, el costo. Elaborado en el software Geogebra.}
+\insertimageleft[\label{img:grafica-fut}]{assets/graf-fut.png}{0.4}{Grafica de $f_{ut}(Q)$ para los datos del problema dado (Figura \ref{img:problema}). En el eje de las abscisas, el valor de Q. En el eje de las ordenadas, el costo. Elaborado en el software Geogebra.}
 
 A partir de nuestra función de costo por periodo \ref{eqn:ft}, podemos generar una nueva función de costo tal que:
 
@@ -87,7 +87,7 @@ Esta función es convexa, por lo que podemos igualar el valor de la derivada de 
 
 La ecuación resultante corresponde al Lote de Wilson.
 
-%%%%% Fin seccion Marco teórico %%%%%
+%%%%% Fin sección Marco teórico %%%%%
 %\clearpage
 
 \section{Resolución del problema}
@@ -110,12 +110,12 @@ Sabemos entonces que optimizamos los costos de nuestros pedidos con una cantidad
 
 \insertequationanum{f_t(50) = 20 \times 50 + \frac{1}{2} \times 50 \times 4 \times t + 5}
 
-Podemos reemplazar el valor de $t$ nuevamente (utilizando la ecuación \ref{eqn:tan}), con lo que nos quedariamos con:
+Podemos reemplazar el valor de $t$ nuevamente (utilizando la ecuación \ref{eqn:tan}), con lo que nos quedaríamos con:
 
 \insertequationanum{f_t(50) = 20 \times 50 + \frac{1}{2} \times 50 \times 4 \times \frac{50}{1000} + 5}
 \insertequation[\label{res:ft1}]{\boxed{f_t(50) = \$1010}}
 
-Esta comprobación también es aplicable a nuestra función de costo por unidad de tiempo (Equación \ref{eqn:fut}):
+Esta comprobación también es aplicable a nuestra función de costo por unidad de tiempo (Ecuación \ref{eqn:fut}):
 
 \insertequationanum{f_{ut}(50) = 20 \times 1000 + \frac{50 \times 4}{2}   + \frac{5 \times 1000}{50}}
 \insertequation[\label{res:fut1}]{\boxed{f_{ut}(50) = \$20200}}
@@ -178,7 +178,7 @@ Siguiendo desde arriba hacia abajo en nuestra tabla presentada en la figura \ref
     \item \textbf{Grand total cost:} Costo total por unidad de tiempo. Según nuestro resultado inicial (Ecuación \ref{res:fut1}), \$20,200 unidades monetarias.
 \end{enumerate}
 
-Podemos complementar además esto, con un análisis gráfico (Figura \ref{img:winqsb:4}). A continuación se presenta un gráfico de cada tipo de costo dependiendo de la cantidad de orden. En el eje de las abcisas, la cantidad de orden. En el eje de las ordenadas, el costo en unidades monetarias. En rosa, costo de pedidos. En rojo, costo de mantención de inventario. En negro, costo total por unidad de tiempo. El valor de nuestro lote economico de compra es demarcado como \quotes{EOQ} por el software.
+Podemos complementar además esto, con un análisis gráfico (Figura \ref{img:winqsb:4}). A continuación se presenta un gráfico de cada tipo de costo dependiendo de la cantidad de orden. En el eje de las abscisas, la cantidad de orden. En el eje de las ordenadas, el costo en unidades monetarias. En rosa, costo de pedidos. En rojo, costo de mantención de inventario. En negro, costo total por unidad de tiempo. El valor de nuestro lote económico de compra es demarcado como \quotes{EOQ} por el software.
 
 \insertimage[\label{img:winqsb:4}]{assets/winqsb/4.png}{scale=0.38}{Funciones de costo a partir de cantidad de orden}
 
@@ -187,12 +187,12 @@ Como último gráfico, podemos re hacer nuestra figura del modelo de Wilson (Fig
 \insertimage[\label{img:winqsb:5}]{assets/winqsb/5.png}{scale=0.38}{Modelo de Wilson a partir de resultados}
 
 
-%%%%% Fin seccion Resolución del problema %%%%%
+%%%%% Fin sección Resolución del problema %%%%%
 \clearpage
 
 \section{Conclusión}
 
-%%%%% Fin seccion Conclusión %%%%%
+%%%%% Fin sección Conclusión %%%%%
 \clearpage
 
 
