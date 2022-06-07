@@ -1,6 +1,51 @@
 \section{Introducción}
-\cite{template}
-\section{Marco teórico}
+La tarea de simular un sistema consiste en, a traves del uso del azar y la probabilidad, utilizar un modelo del sistema para la predicción del comportamiento de este mismo. Esto permite un análisis profundo de un sistema sin tener que producir su comportamiento, sino unicamente reproducirlo en un ambiente controlado, con lo que podemos predecir desempeño de este sistema, casos críticos, y otros factores de interés para el mismo.
+
+En el caso a mano, se nos presentan dos tipos de sistemas similares, basados en colas de atención para clientes/usuarios. A través de una simulación de estos, podemos predecir el comportamiento de la atención de ambos sistemas, y sacar conclusiones del desempeño del mismo, e incluso ayudar en la toma de decisiones respecto a este sistema.
+
+Para ambos problemas, se utilizará WinQSB para la simulación de estos.
+
+\subsection{Problema 1}
+Este problema es encontrado en el libro Análisis cuantitativo con WinQSB \cite{acwinqsb}. Podemos encontrar un enunciado en el capítulo 13 del mismo.
+
+\insertimage[\label{problema:1}]{assets/problema.png}{scale=0.5}{Enunciado del problema encontrado en el capítulo 13 del libro Análisis cuantitativo con WinQSB \cite{acwinqsb}}
+
+\subsection{Problema 2}
+El segundo problema se encuentra en los requerimientos para este informe. A continuación se presenta con una transcripción del mismo: \\
+
+\noindent \fbox{
+    \parbox{\textwidth}{
+        \label{problema:2}
+        Una sala de cine posee dos cajas, que atienden a un cliente en
+        un promedio de 17 minutos con una desviación de 0.012. Los
+        clientes llegan a una tasa de uno cada 14 minutos y hacen una
+        sola cola con capacidad máxima de 16 clientes y disciplina
+        FIFO.
+
+        Considere que la llegada de los clientes se comporta similar a
+        una distribución tipo Poisson y los cajeros con una distribución
+        normal.
+
+        Se pide:
+
+        \begin{itemize}
+            \item Simular 150 minutos con una semilla Random igual a los primeros
+                  5 dígitos del Rut del alumno (Por ejemplo, Rut 22.167.744-7,
+                  semilla es 22167)
+            \item Mostrar los resultados e interpretación de cada uno de los
+                  resultados que se muestran en los cuadros: \begin{itemize}
+                      \item Show Customer Analysis
+                      \item Show Server Analysis
+                      \item Show Queue Analysis
+                  \end{itemize}
+        \end{itemize}
+    }
+}
+
+%%%% FIN SECCIÓN INTRODUCCIÓN %%%%
+\clearpage
+
+% \section{Marco teórico}
 \section{Simulación del problema}
 \section{Conclusión}
 
