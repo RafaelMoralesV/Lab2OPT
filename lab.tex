@@ -95,5 +95,12 @@ El resultado, entonces, corresponde a las siguientes tres tablas.
 Para esta simulación vemos, entonces, un total de 1815 clientes de entrada, con un total de 1435 atenciones, lo que equivale a una tasa de atención del $0.79$, o al rededor de 4 de cada 5 personas. La espera promedio fue de 9 minutos y medio, mientras que el tiempo de atención promedio para ambos cajeros fue de 3 minutos y medio, los que tuvieron un porcentaje de utilización promedio de $27.60\%$. Por último, el largo máximo logrado de la cola fue de 16 personas, con un promedio de $1.50$ clientes en ella, y una espera máxima de 42 minutos.
 
 \section{Conclusión}
+Bajo la simulación de dos sistemas similares en componentes, podemos ver como la alteración de sus parámetros produce resultados radicales.
+
+Ambos problemas presentan, en su base, un mismo sistema: una cola única donde los clientes son atendidos por uno de los dos cajeros disponibles. Sin embargo, el uso de WinQSB muestra como una razón de llegada ligeramente distinta, o una razón de atención levemente alterada, puede provocar cantidades distintas de atenciones en sistemas que, de otra forma, serían casi idénticos.
+
+Este desarrollo, por desgracia, no ahondó en como el azar juega un rol importante en esto: de haberse simulados problemas idénticos con semillas distintas, los resultados también serían generalmente distintos, de una forma más o menos notoria según el caso.
+
+Utilizar esta simulación para medir el comportamiento de este sistema, entonces, solo es correcto conforme estos parámetros más y mejor se ajusten al sistema que estamos modelando, pues cualquier parámetro que no refleje las realidades de nuestro sistema estudiado puede resultar en resultados que muestran a uno completamente distinto del que nos interesa.
 
 \bibliography{library}
